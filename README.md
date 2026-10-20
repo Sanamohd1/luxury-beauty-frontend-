@@ -1,5 +1,27 @@
 # Getting Started with Create React App
 
+## Render deployment
+
+This repository includes `render.yaml` for a Render Static Site with React Router
+support. Build with `npm ci && npm run build` and publish the `build` directory.
+Set `REACT_APP_BACKEND_URL` in Render's environment to the backend origin.
+
+For an existing site managed through the Render dashboard, open the
+**luxury-beauty-frontend** service's **Redirects/Rewrites** tab and add:
+
+| Source | Destination | Action |
+| --- | --- | --- |
+| `/*` | `/index.html` | Rewrite |
+
+Save the rule, then test opening and refreshing
+`/products?category=Skincare` directly. The rewrite serves the React app while
+preserving the URL and category query parameter. It also supports product detail,
+cart, checkout, orders, and authentication URLs.
+
+Committing `render.yaml` does not automatically configure a dashboard-managed
+site. Apply the rule there, or link the existing service to a Render Blueprint
+using this repository's `render.yaml`.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
